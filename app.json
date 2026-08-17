@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "aula1",
+    "slug": "aula1",
+    "scheme": "aula1",
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
