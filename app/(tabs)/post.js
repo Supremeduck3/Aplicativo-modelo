@@ -100,7 +100,7 @@ export default function HeroisCriarScreen() {
           placeholder="Ex: https://exemplo.com/saitama.jpg"
         />
 
-        <Text style={styles.secao}>Campos específicos do tema de animES</Text>
+        <Text style={styles.secao}>Campos específicos do tema de animes</Text>
 
         <Text style={styles.rotulo}>Número de Episodios</Text>
         <TextInput
@@ -130,7 +130,7 @@ export default function HeroisCriarScreen() {
           style={styles.campo}
           value={ano_lancamento}
           onChangeText={setLancamento}
-          placeholder="Ex: Estudio Ghibli"
+          placeholder="Ex: 2022"
         />
 
         <Pressable style={styles.botao} onPress={criarAnime} disabled={enviando}>
