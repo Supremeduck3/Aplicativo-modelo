@@ -13,7 +13,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import BuscarAnime from './getbyid';
 
-const API_KEY = 'cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE';
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
+
 const api = axios.create({
     baseURL: 'https://api-ds.codeverse.dev.br',
     headers: {

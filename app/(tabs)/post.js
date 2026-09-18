@@ -11,7 +11,9 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 
-const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE";
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
 
 // Mesma instância do axios usada na tela de listagem, com o header já
 // configurado — toda chamada feita com "api" já sai autenticada.
