@@ -58,35 +58,33 @@ export default function BuscarAnime() {
             setBuscando(false);
         }
     }
-}
-
-return (
-    <SafeAreaView>
-        <ScrollView>
-            <View>
-                <Text>
+    return (
+    <SafeAreaView styles={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.conteudo}>
+            <View style={styles.conteudo}>
+                <Text style={styles.tituloPagina}>
                     Buscar Anime
                 </Text>
-                <Text>
+                <Text style={styles.subtitulo}>
                     Por id
                 </Text>
             </View>
-            <Text>Id do Anime</Text>
+            <Text style={styles.rotulo}>Id do Anime</Text>
             {/*campo de pesquisa, o onchange text ele verifica se houver mudança no texto e set o id para o valor que foi colocado*/}
-            <View style={StyleSheet.campoDeBusca}>
+            <View style={styles.campoDeBusca}>
                 <TextInput
-                    style={StyleSheet.campo}
+                    style={styles.campo}
                     value={id}
                     onChangeText={setId}
                     placeholder='Exemplo: 1'
                     keyboardType='numeric'
                 />
                 {/* ao pressinar realiza a ação de pesquisa */}
-                <Pressable style={StyleSheet.botao}
+                <Pressable style={styles.botao}
                     onPress={buscarPorId}
                     disabled={buscando}
                 >
-                    <Text>
+                    <Text style={styles.botaoTexto}>
                         {buscando ? "..." : "Buscar anime"}
                     </Text>
                 </Pressable>
@@ -96,12 +94,12 @@ return (
             {erro ? <Text>{erro}</Text> : null}
 
             {naoEncontrado && (
-                <Text>
+                <Text style={styles.avisoNaoEncontrado}>
                     Nenhum anime encontrado com esse id
                 </Text>
             )}
-            {filme && (
-                <View>
+            {anime && (
+                <View style={styles.card}>
                     {anime.imageUrl ? (
                         <Image
                             source={{ uri: anime.imageUrl }}
@@ -116,7 +114,7 @@ return (
                         <Text style={styles.titulo}>
                             {anime.title}
                         </Text>
-                        <Text style={style.categoria}>
+                        <Text style={styles.categoria}>
                             {anime.genero} . {anime.ano}
                         </Text>
                     </View>
@@ -125,3 +123,135 @@ return (
         </ScrollView>
     </SafeAreaView>
 )
+}
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#f8fbff",
+  },
+
+  conteudo: {
+    padding: 24,
+    paddingBottom: 48,
+  },
+
+  header: {
+    marginBottom: 16,
+  },
+
+  tituloPagina: {
+    fontSize: 24,
+    fontWeight: "800",
+    color: "#102542",
+  },
+
+  subtitulo: {
+    fontSize: 14,
+    color: "#5f6b7a",
+    marginTop: 2,
+  },
+
+  rotulo: {
+    fontSize: 13,
+    fontWeight: "600",
+    color: "#334155",
+    marginBottom: 4,
+  },
+
+  campoDeBusca: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "flex-start",
+  },
+
+  campo: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#cbd5e1",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    backgroundColor: "white",
+  },
+
+  botao: {
+    backgroundColor: "#1565c0",
+    paddingHorizontal: 18,
+    paddingVertical: 11,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  botaoTexto: {
+    color: "white",
+    fontWeight: "700",
+  },
+
+  erro: {
+    color: "#c62828",
+    marginTop: 12,
+  },
+
+  avisoNaoEncontrado: {
+    color: "#9a6700",
+    marginTop: 16,
+    fontStyle: "italic",
+  },
+
+  card: {
+    flexDirection: "row",
+    gap: 12,
+    marginTop: 16,
+    backgroundColor: "white",
+    borderRadius: 10,
+    overflow: "hidden",
+    padding: 0,
+  },
+
+  imagem: {
+    width: 100,
+    height: 140,
+  },
+
+  imagemSemFoto: {
+    width: 100,
+    height: 140,
+    backgroundColor: "#e2e8f0",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  textoSemFoto: {
+    fontSize: 32,
+  },
+
+  info: {
+    flex: 1,
+    justifyContent: "center",
+    paddingRight: 12,
+    gap: 5,
+  },
+
+  titulo: {
+    fontSize: 17,
+    fontWeight: "700",
+    color: "#102542",
+  },
+
+  categoria: {
+    fontSize: 13,
+    color: "#64748b",
+  },
+
+  diretor: {
+    fontSize: 13,
+    color: "#475569",
+  },
+
+  nota: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: "#d97706",
+  },
+});
