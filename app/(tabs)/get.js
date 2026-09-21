@@ -21,8 +21,8 @@ const api = axios.create({
 });
 
 
-export default function HeroisListarScreen() {
-    const [herois, setHerois] = useState([]);
+export default function AnimesListarScreen() {
+    const [herois, setAnimes] = useState([]);
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
 
