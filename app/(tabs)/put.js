@@ -12,9 +12,9 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 
-require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+
+const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE";
 
 const api = axios.create({
     baseURL: "https://api-ds.codeverse.dev.br",
@@ -61,7 +61,7 @@ export default function PutAnimes() {
         setTitulo(anime.title ?? "");
         setDescricao(anime.description ?? "");
         setImagemUrl(anime.imageUrl ?? "");
-        setGenero(anime.genero ?? "");
+        
     }
 
     async function salvarEdicao() {
@@ -228,13 +228,7 @@ export default function PutAnimes() {
                             Gênero
                         </Text>
 
-                        <TextInput
-                            style={styles.campo}
-                            value={genero}
-                            onChangeText={setGenero}
-                            placeholder="Ex: Ação"
-                            placeholderTextColor="#999"
-                        />
+                        
 
                         <Pressable
                             style={[

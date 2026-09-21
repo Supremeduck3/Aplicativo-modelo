@@ -11,11 +11,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
-import BuscarAnime from './getbyid';
 
-require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+
+const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE";
 
 const api = axios.create({
     baseURL: 'https://api-ds.codeverse.dev.br',
@@ -29,7 +28,7 @@ export default function ExcluirAnimes() {
     const [carregando, setCarregando] = useState(true);
     const[erro, setErro] = useState(null);
     const [excluindoId, setExcluindo] = useState(null)
-    async function buscarIdAnime(){
+    async function buscarAnime(){
         setCarregando(true);
         setErro(null);
 
@@ -37,6 +36,7 @@ export default function ExcluirAnimes() {
             const resposta = await api.get("/api/animes", {
                 params :{ limit: 50}
             })
+            setAnimes(resposta)
         }catch(error){
             setErro("Não foi possivel carregar os animes");
         }finally{
@@ -46,7 +46,7 @@ export default function ExcluirAnimes() {
 
     //roda conforme a pagina recarrega
     useEffect(()=>{
-        BuscarAnime();
+        buscarAnime();
     }, []);
 
     async function ExcluirAnime(id){
@@ -84,7 +84,7 @@ export default function ExcluirAnimes() {
                             </View>
                             <Pressable
                                 style={styles.botaoExcluir}
-                                onPress={() => confirmarExclusao(item)}
+                                onPress={() => ExcluirAnime(item)}
                                 disabled={excluindoId === item.id}>
                                 <Text style={styles.botaoExcluirTexto}>
                                     {excluindoId === item.id ? '...' : 'Excluir'}

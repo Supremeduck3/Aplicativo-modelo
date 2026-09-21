@@ -10,9 +10,9 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 
-require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+
+const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqAp";
 const api = axios.create({
     baseURL: "https://api-ds.codeverse.dev.br",
     headers: {
@@ -34,7 +34,7 @@ export default function AnimesListarScreen() {
                 params: { limit: 50 },
             });
 
-            setHerois(resposta.data.data);
+            setAnimes(resposta.data.data);
         } catch (e) {
             setErro("Não foi possível carregar os heróis. Tenta de novo em instantes.");
         } finally {
@@ -50,8 +50,8 @@ export default function AnimesListarScreen() {
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.conteudo}>
                 <View style={styles.header}>
-                    <Text style={styles.tituloPagina}>Listar heróis</Text>
-                    <Text style={styles.subtitulo}>GET /api/herois</Text>
+                    <Text style={styles.tituloPagina}>Listar Animes</Text>
+                    <Text style={styles.subtitulo}>GET /api/animes</Text>
                 </View>
 
                 {carregando && <ActivityIndicator style={{ marginVertical: 16 }} />}
@@ -63,9 +63,7 @@ export default function AnimesListarScreen() {
                             <Image source={{ uri: item.imageUrl }} style={styles.imagem} />
                             <View style={styles.info}>
                                 <Text style={styles.titulo}>{item.title}</Text>
-                                <Text style={styles.categoria}>
-                                    {item.universo} · {item.poder}
-                                </Text>
+                                
                             </View>
                         </View>
                     ))}

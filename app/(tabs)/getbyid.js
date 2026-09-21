@@ -3,9 +3,9 @@ import { View, Text, Image, TextInput, Pressable, StyleSheet, ActivityIndicator,
 import { SafeAreaView } from 'react-native-safe-area-context'
 import axios from 'axios'
 
-require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+
+const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE";
 
 /* resumo do codigo ele cria o get e ai quando o usuario digita um id ele subistitui o valor do id no caminho do get , é setado o id -> substitui na rota do get*/
 

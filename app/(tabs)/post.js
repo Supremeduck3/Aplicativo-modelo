@@ -11,12 +11,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import axios from "axios";
 
-require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
 
-// Mesma instância do axios usada na tela de listagem, com o header já
-// configurado — toda chamada feita com "api" já sai autenticada.
+const API_KEY = "cv_1VfeU3pOZVBNE_YHODnm8KHctij77rwrhKxtmTiqTOKnuv6IdlMBBnDOEwcqApVE";
+
 const api = axios.create({
   baseURL: "https://api-ds.codeverse.dev.br",
   headers: {
@@ -24,7 +22,7 @@ const api = axios.create({
   },
 });
 
-export default function HeroisCriarScreen() {
+export default function AnimesCriarScreen() {
   const [titulo, setTitulo] = useState("");
   const [imagemUrl, setImagemUrl] = useState("");
   const [genero, setGenero,] = useState("");
@@ -82,7 +80,7 @@ export default function HeroisCriarScreen() {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.conteudo}>
         <View style={styles.header}>
-          <Text style={styles.tituloPagina}>Criar herói</Text>
+          <Text style={styles.tituloPagina}>Criar anime</Text>
           <Text style={styles.subtitulo}>POST /api/herois</Text>
         </View>
 
@@ -136,7 +134,7 @@ export default function HeroisCriarScreen() {
         />
 
         <Pressable style={styles.botao} onPress={criarAnime} disabled={enviando}>
-          <Text style={styles.botaoTexto}>{enviando ? "Enviando..." : "Criar herói"}</Text>
+          <Text style={styles.botaoTexto}>{enviando ? "Enviando..." : "Criar anime"}</Text>
         </Pressable>
       </ScrollView>
     </SafeAreaView>
